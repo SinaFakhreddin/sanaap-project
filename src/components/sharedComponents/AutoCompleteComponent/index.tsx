@@ -16,6 +16,7 @@ type Props<T extends { id: string | number; name: string }> = {
   search: string;
   error?: string;
   loading?: boolean;
+  placeholder?: string;
 };
 export default function AutoCompleteComponent<
   T extends { id: string | number; name: string },
@@ -34,13 +35,12 @@ export default function AutoCompleteComponent<
         if (!branch) return;
         props.onChange(branch.id.toString());
         props.onSetSearch(branch.name);
-        // field.onChange(branch.id.toString());
-        // setSearch(branch.name);
         combobox.closeDropdown();
       }}
     >
       <Combobox.Target>
         <TextInput
+          placeholder={props.placeholder}
           label={props.label}
           leftSection={props.leftIcon}
           value={props.search}

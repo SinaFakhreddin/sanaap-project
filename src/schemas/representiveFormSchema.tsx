@@ -15,8 +15,9 @@ const baseSchema = z.object({
     .trim()
     .min(1, "کد شهر الزامی است")
     .max(4, "کد معتبر نیست"),
-  phoneNumber: z.string(),
-  // .regex(/^0\d{7,}$/, "شماره تلفن باید با ۰ شروع شود و حداقل ۸ رقم باشد"),
+  phoneNumber: z
+    .string()
+    .regex(/^0\d{10}$/, "شماره تلفن باید ۱۱ رقم و با ۰ شروع شود"),
 });
 const realSchema = baseSchema.extend({
   insuranceType: z.literal("real"),

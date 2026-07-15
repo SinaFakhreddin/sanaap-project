@@ -157,6 +157,7 @@ export default function FormContent(props: Props) {
         control={control}
         render={({ field }) => (
           <AutoCompleteComponent<InsuranceDataRs>
+            placeholder={"جستجو..."}
             search={props.branchSearch}
             onSetSearch={props.setBranchSearch}
             onChange={field.onChange}
