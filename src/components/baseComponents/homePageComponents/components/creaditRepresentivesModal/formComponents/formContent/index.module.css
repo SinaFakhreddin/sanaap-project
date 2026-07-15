@@ -1,0 +1,62 @@
+.header {
+    background-color: light-dark(
+            var(--mantine-color-primary-6),
+            var(--mantine-color-primary-3)
+    ) !important;
+}
+
+.body {
+    padding: 0 !important;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 700;
+    color: light-dark(var(--mantine-color-white), var(--mantine-color-black));
+}
+
+.close {
+    color: light-dark(var(--mantine-color-white), var(--mantine-color-black)) !important;
+
+    &:hover {
+        background-color: transparent !important;
+    }
+}
+
+.cardBox {
+    background-color: light-dark(
+            var(--mantine-color-gray-1),
+            var(--mantine-color-gray-8)
+    );
+    padding: 25px !important;
+}
+
+
+
+.cardBoxBtn {
+    padding: 8px 16px !important;
+}
+
+
+.deleteText {
+    color: light-dark(var(--mantine-color-white), var(--mantine-color-black)) !important;
+}
+
+.cancelText {
+    color: light-dark(var(--mantine-color-gray-9), var(--mantine-color-white)) !important;
+}
+
+
+.groupBtnWrapper{
+    display: flex;
+    flex-direction: row !important;
+    gap: var(--mantine-spacing-sm);
+}
+
+.successInput{
+    color: var(--mantine-primary-color-6);
+}
+
+.successBorder{
+    border-color: var(--mantine-primary-color-6);
+}
