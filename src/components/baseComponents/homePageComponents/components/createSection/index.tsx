@@ -12,7 +12,7 @@ export default function CreateSectionComponent() {
         leftSection={<IconPlus />}
         onClick={() => dispatch(setModalOpen(true))}
       >
-        Create new representive
+        ساخت رکورد جدید
       </Button>
     </Flex>
   );

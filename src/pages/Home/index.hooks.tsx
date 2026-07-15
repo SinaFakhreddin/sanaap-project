@@ -1,11 +1,10 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import {
-  BaseService,
-  BaseServicePath,
-} from "../../http/end-points/BaseService.ts";
+import { BaseService } from "../../http/end-points/BaseService.ts";
 import { AgencyService } from "../../http/end-points/AgencyServices.ts";
 import { RepresentativesService } from "../../http/end-points/RepresentativesServices.ts";
 import { notifications } from "@mantine/notifications";
+import type { ApiErrorResponse } from "../../types/genericTypes.ts";
+import { Flex, Text } from "@mantine/core";
 
 type ParamsType = {
   provinceCode?: number;
@@ -30,7 +29,6 @@ export function useRepresentiveApiCall(params?: ParamsType) {
   const {
     data: countiesData,
     isFetching: countiesFetching,
-    isPending: countiesPending,
     isLoading: countiesIsLoading,
   } = useQuery({
     queryKey: ["get-counties", params?.provinceCode],
@@ -46,7 +44,6 @@ export function useRepresentiveApiCall(params?: ParamsType) {
   } = useQuery({
     queryKey: ["get-branches", params?.branchName],
     queryFn: ({ signal }) => {
-      console.log(params?.branchName);
       return AgencyService.getInsuranceBranch(params?.branchName || "", signal);
     },
     enabled: !!params?.branchName,
@@ -69,20 +66,28 @@ export function useRepresentiveApiCall(params?: ParamsType) {
     useMutation({
       mutationKey: ["create-new"],
       mutationFn: RepresentativesService.createRepresentatives,
-      onSuccess: () => {
-        //after refetch
+      onSuccess: (res) => {
         notifications.show({
           title: "عملیات موفق آمیز",
-          message: "رکورد جدید ثبت شد.",
+          message: (
+            <>
+              <Flex>
+                <Text size={"xs"}>رکورد جدید ثبت شد.</Text>
+                <Text
+                  size={"xs"}
+                  fw={"bold"}
+                >{`access : ${res.data.response?.access}`}</Text>
+              </Flex>
+            </>
+          ),
           withBorder: true,
           color: "green",
         });
       },
-      onError: (error) => {
-        console.log({ error });
+      onError: (error: ApiErrorResponse) => {
         notifications.show({
           title: "عملیات ناموفق",
-          message: "خطایی رخ داد",
+          message: `${error.error_details.fa_details}`,
           withBorder: true,
           color: "red",
         });

@@ -13,7 +13,7 @@ export const convertedFormValue = (value: AgencyForm): RepresentativesRq => {
     county: value.city,
     insurance_branch: value.branch,
     phone_number: value.phoneNumber,
-    phone: "09000000009",
+    phone: "0900999999",
     province: value.province,
     ...(value.insuranceType === InsuranceTypeEnum.Legal
       ? { name: value.Name }

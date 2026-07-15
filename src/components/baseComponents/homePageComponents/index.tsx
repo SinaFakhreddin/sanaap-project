@@ -1,6 +1,9 @@
 import { Flex } from "@mantine/core";
 import CreateSectionComponent from "./components/createSection";
-import { CreaditRepresentivesModal } from "./components/creaditRepresentivesModal";
+import { lazy } from "react";
+const CreaditRepresentivesModal = lazy(
+  () => import("./components/creaditRepresentivesModal"),
+);
 
 export default function HomePageComponents() {
   return (

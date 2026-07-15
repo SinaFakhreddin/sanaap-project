@@ -18,7 +18,6 @@ const baseSchema = z.object({
   phoneNumber: z.string(),
   // .regex(/^0\d{7,}$/, "شماره تلفن باید با ۰ شروع شود و حداقل ۸ رقم باشد"),
 });
-
 const realSchema = baseSchema.extend({
   insuranceType: z.literal("real"),
 });

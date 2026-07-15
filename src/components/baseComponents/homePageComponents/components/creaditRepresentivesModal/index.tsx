@@ -25,7 +25,7 @@ import type { AppAxiosError } from "../../../../../types/genericTypes.ts";
 import { convertedFormValue } from "../../../../../libs";
 import FormContent from "./formComponents/formContent";
 
-export function CreaditRepresentivesModal() {
+export default function CreaditRepresentivesModal() {
   const theme = useMantineTheme();
   const combobox = useCombobox({
     onDropdownClose: () => combobox.resetSelectedOption(),
