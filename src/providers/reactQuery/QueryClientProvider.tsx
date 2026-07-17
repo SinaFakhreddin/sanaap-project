@@ -12,15 +12,16 @@ export default function QueryClientProvider({
   children: React.ReactNode;
 }) {
   const [queryClient] = useState(
-    new QueryClient({
-      defaultOptions: {
-        queries: {
-          refetchOnMount: true,
-          refetchOnWindowFocus: false,
-          retry: false,
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            refetchOnMount: true,
+            refetchOnWindowFocus: false,
+            retry: false,
+          },
         },
-      },
-    }),
+      }),
   );
   return (
     <RQueryClientProvider client={queryClient}>{children}</RQueryClientProvider>
